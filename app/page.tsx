@@ -13,6 +13,7 @@ export default async function Page() {
             <p>big dawg</p>
             <a href="/auth/login">Login</a> <br></br>
             <a href="/auth/signup">Signup</a>
+            <a href="/posts/create">Create Post</a>
         </ul>
     )
 }

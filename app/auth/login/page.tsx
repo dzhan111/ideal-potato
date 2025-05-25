@@ -20,7 +20,7 @@ export default function Login() {
 
         try {
             const { error } = await supabase.auth.signInWithPassword({
-                email: 'd@gmail.com', // Trim whitespace
+                email: 'd@gmail.com',
                 password: '123456'
             });
 
