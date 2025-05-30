@@ -1,4 +1,5 @@
 // app/dashboard/page.tsx
+import Post from '@/components/post'
 import { createClient } from '@/utils/supabase/server'
 import { redirect } from 'next/navigation'
 
@@ -28,12 +29,11 @@ export default async function Dashboard() {
                 Welcome {user?.user_metadata.username}
             </div>
             <p>Email: {user?.email}</p>
+            <a href="/posts/public">See Public posts</a>
             <div> Your postsL
                 {posts?.map((post) => (
                     <div key={post.id} className='border-2 border-gray-300 p-4 rounded-md'>
-                        <h2 className='text-red-500'>{post.title}</h2>
-                        <p>{post.excerpt}</p>
-                        <p>{post.content}</p>
+                        <Post post={post} />
                     </div>
                 ))}
             </div>

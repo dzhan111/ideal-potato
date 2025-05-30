@@ -20,6 +20,7 @@ async function handleCreatePost(formData: FormData) {
         author_id: session.user.id,
         created_at: new Date().toISOString(),
         updated_at: new Date().toISOString(),
+        username: session.user.user_metadata.username,
         published: true,
     })
 

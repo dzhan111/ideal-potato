@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   experimental: {
-    appDir: true,
+    // appDir is no longer needed as it's now stable in Next.js 13+
   },
 };
 
