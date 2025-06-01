@@ -28,5 +28,15 @@ add see liked posts (needs a new table)
 see follower posts
 
 
+
+add liking to post in all views --> post.tsx
+
+
+post[id] view
+- display post at top screen
+- see comments + num
+- see number of likes
+
+
 recommendation algorithm
 
