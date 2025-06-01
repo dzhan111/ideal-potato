@@ -21,7 +21,11 @@ export default async function Dashboard() {
 
     // Get user data
     const { data: { user } } = await supabase.auth.getUser()
-    const { data: posts } = await supabase.from('posts').select("*").eq('author_id', user?.id)
+    const { data: posts } = await supabase
+        .from('posts')
+        .select("*")
+        .eq('author_id', user?.id)
+        .order('created_at', { ascending: false })
 
     return (
         <>

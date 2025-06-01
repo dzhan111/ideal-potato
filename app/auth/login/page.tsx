@@ -20,8 +20,8 @@ export default function Login() {
 
         try {
             const { error } = await supabase.auth.signInWithPassword({
-                email: 'd@gmail.com',
-                password: '123456'
+                email: email,
+                password: password
             });
 
             if (error) {
@@ -40,6 +40,8 @@ export default function Login() {
 
     return (
         <div>
+            <p>Test users: gurt@gmail.com, gggggg</p>
+            <p>Test users: d@gmail.com, 123456</p>
             <h1>Login</h1>
             <input placeholder='Email' onChange={(e) => setEmail(e.target.value)}></input>
             <input placeholder='Password' onChange={(e) => setPassword(e.target.value)}></input>

@@ -35,10 +35,16 @@ export async function middleware(request: NextRequest) {
         data: { user },
     } = await supabase.auth.getUser()
 
+    // Define public routes that don't require authentication
+    const publicRoutes = ['/', '/posts/public']
+    const isPublicRoute = publicRoutes.some(route =>
+        request.nextUrl.pathname === route || request.nextUrl.pathname.startsWith(route + '/')
+    )
+
     if (
         !user &&
         !request.nextUrl.pathname.startsWith('/auth') &&
-        !request.nextUrl.pathname.startsWith('/api')
+        !isPublicRoute
     ) {
         // no user, potentially respond by redirecting the user to the login page
         const url = request.nextUrl.clone()
