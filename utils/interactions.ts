@@ -1,4 +1,6 @@
 import { createClient } from '@/utils/supabase/server'
+import { revalidatePath } from 'next/cache'
+import { redirect } from 'next/navigation'
 
 // Like functions
 export async function toggleLike(postId: string, userId: string) {
@@ -81,8 +83,8 @@ export async function getComments(postId: string) {
             id,
             content,
             created_at,
-            user_id,
-            profiles(username)
+            user_id
+       
         `)
         .eq('post_id', postId)
         .order('created_at', { ascending: false })

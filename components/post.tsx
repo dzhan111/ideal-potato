@@ -35,10 +35,9 @@ export default async function Post({ post }: { post: any }) {
                 <h2 className='text-xl font-semibold text-gray-900 mb-2'>{post.title}</h2>
             </Link>
 
-            <div className='flex items-center text-sm text-gray-600 mb-3 space-x-4'>
+            <div className='flex items-center justify-between text-sm text-gray-600 mb-3'>
                 <span>{post.username}</span>
-                <span></span>
-                <span>{new Date(post.created_at).toLocaleDateString()}</span>
+                <span className='text-gray-500'>{new Date(post.created_at).toLocaleDateString()}</span>
             </div>
 
             {post.excerpt && (

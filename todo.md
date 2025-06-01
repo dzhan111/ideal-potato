@@ -29,13 +29,23 @@ see follower posts
 
 
 
-add liking to post in all views --> post.tsx
-
+Todo:
 
 post[id] view
 - display post at top screen
 - see comments + num
 - see number of likes
+
+
+Features to add future
+- daily note feature
+- anonymous notes
+- ** websocket chat 
+
+
+bugs:
+- user is able to relike post after entering the post view
+- comments not loading
 
 
 recommendation algorithm

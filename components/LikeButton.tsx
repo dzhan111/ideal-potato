@@ -65,12 +65,12 @@ export default function LikeButton({
         <button
             onClick={handleLike}
             disabled={isPending}
-            className='flex items-center space-x-1 text-sm text-gray-600 hover:cursor-pointer transition-colors disabled:opacity-50'
+            className='flex items-center space-x-1 text-md text-gray-600 hover:cursor-pointer transition-colors disabled:opacity-50'
         >
             <span className={`transition-colors ${isLiked ? 'text-red-500' : 'text-gray-600'}`}>
                 {isLiked ? <FaHeart /> : <FaRegHeart />}
             </span>
-            <span>{likesCount}</span>
+            <span> {likesCount}</span>
         </button>
     )
 } 
