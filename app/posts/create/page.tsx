@@ -5,8 +5,8 @@ import Link from "next/link"
 async function handleCreatePost(formData: FormData) {
     'use server'
     const supabase = createClient()
-    const { data: { session }, error } = await supabase.auth.getSession()
-    if (!session) redirect('/auth/login')
+    const { data: { user }, error } = await supabase.auth.getUser()
+    if (!user) redirect('/auth/login')
 
     const title = formData.get('title')
     const excerpt = formData.get('excerpt')
@@ -16,10 +16,10 @@ async function handleCreatePost(formData: FormData) {
         title: title,
         excerpt: excerpt,
         content: content,
-        author_id: session.user.id,
+        author_id: user.id,
         created_at: new Date().toISOString(),
         updated_at: new Date().toISOString(),
-        username: session.user.user_metadata.username,
+        username: user.user_metadata.username,
         published: true,
     })
 
