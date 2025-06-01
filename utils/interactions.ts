@@ -61,15 +61,20 @@ export async function isPostLikedByUser(postId: string, userId: string) {
 export async function addComment(postId: string, userId: string, content: string) {
     const supabase = createClient()
 
-    const { data, error } = await supabase
-        .from('comments')
-        .insert({
-            post_id: postId,
-            user_id: userId,
-            content: content,
-            created_at: new Date().toISOString()
-        })
-        .select()
+    // Get user data to extract username
+    const { data: { user } } = await supabase.auth.getUser()
+    if (!user) {
+        return { data: null, error: 'User not found' }
+    }
+    const username = user.user_metadata?.username || 'Anonymous'
+
+    const { data, error } = await supabase.from('comments').insert({
+        post_id: postId,
+        user_id: userId,
+        content: content,
+        username: username, // Store username directly
+        created_at: new Date().toISOString()
+    })
 
     return { data, error }
 }
@@ -83,8 +88,8 @@ export async function getComments(postId: string) {
             id,
             content,
             created_at,
-            user_id
-       
+            user_id,
+            username
         `)
         .eq('post_id', postId)
         .order('created_at', { ascending: false })

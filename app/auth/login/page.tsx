@@ -99,6 +99,7 @@ export default function Login() {
                     <p className="font-medium mb-1">Test accounts:</p>
                     <p>gurt@gmail.com / gggggg</p>
                     <p>d@gmail.com / 123456</p>
+                    <p>d@b.com / bbbbbb</p>
                 </div>
             </div>
         </div>

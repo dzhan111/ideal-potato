@@ -29,7 +29,7 @@ export default function CommentForm({ postId, onSubmit, isAuthenticated }: Comme
 
     if (!isAuthenticated) {
         return (
-            <div className="text-center py-4">
+            <div className="text-center py-4 mx-auto">
                 <p className="text-gray-600 mb-4">Please log in to leave a comment</p>
                 <a
                     href="/auth/login"
@@ -54,8 +54,8 @@ export default function CommentForm({ postId, onSubmit, isAuthenticated }: Comme
     }
 
     return (
-        <div className="mt-6">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Leave a Comment</h3>
+        <div className="mt-6 px-20">
+            <h3 className="text-lg font-semibold text-gray-900 mb-4 ">Leave a Comment</h3>
 
             <form ref={formRef} action={handleSubmit} className="space-y-4">
                 <div>

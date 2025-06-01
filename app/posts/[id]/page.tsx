@@ -2,6 +2,7 @@ import CommentForm from '@/components/CommentForm'
 import { handleAddComment } from '@/utils/actions'
 import { getComments } from '@/utils/interactions'
 import { createClient } from '@/utils/supabase/server'
+import Comment from '@/components/Comment'
 
 export default async function PostPage({ params }: {
     params: Promise<{ id: string }>
@@ -10,6 +11,7 @@ export default async function PostPage({ params }: {
 
     const supabase = createClient()
     const { data: { user } } = await supabase.auth.getUser()
+    const { data: post, error: postError } = await supabase.from('posts').select('*').eq('id', id).single()
 
     // Get comments
     const { data: comments, error: commentsError } = await getComments(id)
@@ -23,18 +25,22 @@ export default async function PostPage({ params }: {
         <p>Post ID: {id}</p>
 
         <div>
+            <h2>Post</h2>
+            <p>{post.title}</p>
+            <p>{post.content}</p>
+            <p>{post.author_id}</p>
+            <p>{post.created_at}</p>
+            <p>{post.updated_at}</p>
+            <p>Likes {post.likes}</p>
+        </div>
+
+        <div>
             <h2>Comments ({comments?.length || 0})</h2>
 
             {comments && comments.length > 0 ? (
                 <div>
                     {comments.map((comment: any) => (
-                        <div key={comment.id}>
-                            <div>
-                                <span>User {comment.user_id.slice(0, 8)}...</span>
-                                <span>{new Date(comment.created_at).toLocaleDateString()}</span>
-                            </div>
-                            <p>{comment.content}</p>
-                        </div>
+                        <Comment key={comment.id} comment={comment} />
                     ))}
                 </div>
             ) : (
