@@ -46,6 +46,7 @@ Features to add future
 bugs:
 - user is able to relike post after entering the post view
 - comments not loading
+- comments is not 
 
 
 recommendation algorithm
