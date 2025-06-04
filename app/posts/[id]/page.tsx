@@ -26,6 +26,7 @@ export default async function PostPage({ params }: {
 
         <div>
             <h2>Post</h2>
+
             <p>{post.title}</p>
             <p>{post.content}</p>
             <p>{post.author_id}</p>
@@ -45,7 +46,7 @@ export default async function PostPage({ params }: {
                 </div>
             ) : (
                 <div>
-                    <p>No comments yet.</p>
+                    <p>No comments yet. Write your thoughts below!</p>
                 </div>
             )}
 
