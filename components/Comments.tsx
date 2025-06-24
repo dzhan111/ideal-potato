@@ -1,7 +1,15 @@
 import { getComments } from '@/utils/interactions'
 import { createClient } from '@/utils/supabase/server'
-import { handleAddComment, handleDeleteComment } from '@/utils/actions'
+import { handleAddComment } from '@/utils/actions'
 import CommentForm from './CommentForm'
+
+interface Comment {
+  id: string;
+  content: string;
+  created_at: string; // or Date if you parse it early
+  user_id: string;
+  username: string;
+}
 
 export default async function Comments({ postId }: { postId: string }) {
     const supabase = createClient()
@@ -31,7 +39,7 @@ export default async function Comments({ postId }: { postId: string }) {
 
             {comments && comments.length > 0 ? (
                 <div>
-                    {comments.map((comment: any) => (
+                    {comments.map((comment: Comment) => (
                         <div key={comment.id}>
                             <div>
                                 <span>User {comment.user_id.slice(0, 8)}...</span>

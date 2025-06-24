@@ -44,6 +44,7 @@ export default function LikeButton({
                     const { error } = await supabase
                         .from('likes')
                         .insert({ post_id: postId, user_id: userId })
+                        console.log(error)
                 } else {
                     // Remove like
                     const { error } = await supabase
@@ -51,7 +52,9 @@ export default function LikeButton({
                         .delete()
                         .eq('post_id', postId)
                         .eq('user_id', userId)
+                    console.log(error)
                 }
+                
             } catch (error) {
                 // Revert optimistic update on error
                 setIsLiked(!newIsLiked)

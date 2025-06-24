@@ -3,8 +3,16 @@ import { FaRegComment } from "react-icons/fa";
 import { createClient } from "@/utils/supabase/server";
 import LikeButton from "./LikeButton";
 import Link from "next/link";
+interface Post {
+  id: string;
+  title: string;
+  content: string;
+  created_at: string; // or Date if already parsed
+  username: string;
+  excerpt?: string;
+}
 
-export default async function Post({ post }: { post: any }) {
+export default async function Post({ post }: { post: Post }) {
     const supabase = createClient()
 
     // Get current user

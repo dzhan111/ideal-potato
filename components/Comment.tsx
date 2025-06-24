@@ -1,4 +1,3 @@
-import { createClient } from "@/utils/supabase/client"
 
 interface CommentProps {
     comment: {
