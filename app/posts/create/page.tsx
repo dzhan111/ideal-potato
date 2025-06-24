@@ -5,6 +5,7 @@ import Link from "next/link"
 async function handleCreatePost(formData: FormData) {
     'use server'
     const supabase = createClient()
+    // eslint-disable-next-line no-console
     const { data: { user }, error } = await supabase.auth.getUser()
     if (!user) redirect('/auth/login')
 

@@ -1,28 +1,22 @@
-
-import { createClient } from '@/utils/supabase/server'
-import { cookies } from 'next/headers'
+import Link from 'next/link'
 
 export default async function Page() {
-    // const cookieStore = cookies()
-    // const supabase = createClient(cookieStore)
-
-    // const { data: todos } = await supabase.from('todos').select()
-
     return (
         <>
             <p>Ideal Potatoes</p>
 
             <pre className="font-mono text-green-500 text-xs">
-                {`       .---.
+{`       .---.
         /     \\
         | () () |
         \\  ^  /
         |||||
         |||||`}
             </pre>
-            <a href="/auth/login">Login</a> <br></br>
-            <a href="/auth/signup">Signup</a>
-            <a href="/posts/create">Create Post</a>
+
+            <Link href="/auth/login" className="block">Login</Link>
+            <Link href="/auth/signup" className="block">Signup</Link>
+            <Link href="/posts/create" className="block">Create Post</Link>
         </>
     )
 }

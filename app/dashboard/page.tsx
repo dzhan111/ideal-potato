@@ -51,6 +51,7 @@ export default async function Dashboard() {
 
     // Get the current session
     const { data: { session }, error } = await supabase.auth.getSession()
+    console.log(error)
     if (!session) redirect('/auth/login')
 
     // Get user data
